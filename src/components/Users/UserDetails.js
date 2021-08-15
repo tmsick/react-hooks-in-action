@@ -1,4 +1,4 @@
-export default function UserDetails ({user}) {
+export default function UserDetails({ user }) {
   return user ? (
     <div className="item user">
       <div className="item-header">
