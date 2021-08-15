@@ -1,8 +1,8 @@
-import {useState, useEffect, Fragment} from 'react';
+import { useState, useEffect, Fragment } from "react";
 import Spinner from "../UI/Spinner";
 import getData from "../../utils/api"; // we'll use this api function
 
-export default function UsersList () {
+export default function UsersList() {
   // include state for an error object and an isLoading flag
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -14,11 +14,11 @@ export default function UsersList () {
   // update the effect to use the getData function
   useEffect(() => {
     getData("http://localhost:3001/users")
-      .then(data => {
+      .then((data) => {
         setUsers(data);
         setIsLoading(false); // the data has finished loading
       })
-      .catch(error => {
+      .catch((error) => {
         setError(error); // set the error object
         setIsLoading(false); // we're no longer loading
       });
@@ -26,12 +26,16 @@ export default function UsersList () {
 
   // alternative UI for when there's an error
   if (error) {
-    return <p>{error.message}</p>
+    return <p>{error.message}</p>;
   }
 
   // alternative UI while users load
   if (isLoading) {
-    return <p><Spinner/> Loading users...</p>
+    return (
+      <p>
+        <Spinner /> Loading users...
+      </p>
+    );
   }
 
   // this UI is unchanged
@@ -39,14 +43,8 @@ export default function UsersList () {
     <Fragment>
       <ul className="users items-list-nav">
         {users.map((u, i) => (
-          <li
-            key={u.id}
-            className={i === userIndex ? "selected" : null}
-          >
-            <button
-              className="btn"
-              onClick={() => setUserIndex(i)}
-            >
+          <li key={u.id} className={i === userIndex ? "selected" : null}>
+            <button className="btn" onClick={() => setUserIndex(i)}>
               {u.name}
             </button>
           </li>
