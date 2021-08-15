@@ -1,41 +1,35 @@
-import {useRef} from "react";
+import { useRef } from "react";
 import {
   FaChevronLeft,
   FaCalendarDay,
   FaChevronRight,
-  FaCalendarCheck
+  FaCalendarCheck,
 } from "react-icons/fa";
 
-import {addDays, shortISO} from "../../utils/date-wrangler";
-import {useBookingsParams} from "./bookingsHooks";
+import { addDays, shortISO } from "../../utils/date-wrangler";
+import { useBookingsParams } from "./bookingsHooks";
 
-export default function WeekPicker () {
+export default function WeekPicker() {
   const textboxRef = useRef();
 
-  const {date, setBookingsDate : goToDate} = useBookingsParams();
+  const { date, setBookingsDate: goToDate } = useBookingsParams();
 
   const dates = {
     prev: shortISO(addDays(date, -7)),
     next: shortISO(addDays(date, 7)),
-    today: shortISO(new Date())
+    today: shortISO(new Date()),
   };
 
   return (
     <div>
       <p className="date-picker">
-        <button
-          className="btn"
-          onClick={() => goToDate(dates.prev)}
-        >
-          <FaChevronLeft/>
+        <button className="btn" onClick={() => goToDate(dates.prev)}>
+          <FaChevronLeft />
           <span>Prev</span>
         </button>
 
-        <button
-          className="btn"
-          onClick={() => goToDate(dates.today)}
-        >
-          <FaCalendarDay/>
+        <button className="btn" onClick={() => goToDate(dates.today)}>
+          <FaCalendarDay />
           <span>Today</span>
         </button>
 
@@ -52,17 +46,14 @@ export default function WeekPicker () {
             onClick={() => goToDate(textboxRef.current.value)}
             className="go btn"
           >
-            <FaCalendarCheck/>
+            <FaCalendarCheck />
             <span>Go</span>
           </button>
         </span>
 
-        <button
-          className="btn"
-          onClick={() => goToDate(dates.next)}
-        >
+        <button className="btn" onClick={() => goToDate(dates.next)}>
           <span>Next</span>
-          <FaChevronRight/>
+          <FaChevronRight />
         </button>
       </p>
     </div>
