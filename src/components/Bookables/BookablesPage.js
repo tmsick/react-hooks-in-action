@@ -1,24 +1,24 @@
-import {lazy} from "react";
-import {Routes, Route} from "react-router-dom";
+import { lazy } from "react";
+import { Routes, Route } from "react-router-dom";
 
 const BookablesView = lazy(() => import("./BookablesView"));
 const BookableEdit = lazy(() => import("./BookableEdit"));
 const BookableNew = lazy(() => import("./BookableNew"));
 
-export default function BookablesPage () {
+export default function BookablesPage() {
   return (
     <Routes>
       <Route path="/:id">
-        <BookablesView/>
+        <BookablesView />
       </Route>
       <Route path="/">
-        <BookablesView/>
+        <BookablesView />
       </Route>
       <Route path="/:id/edit">
-        <BookableEdit/>
+        <BookableEdit />
       </Route>
       <Route path="/new">
-        <BookableNew/>
+        <BookableNew />
       </Route>
     </Routes>
   );
