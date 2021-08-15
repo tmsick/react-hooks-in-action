@@ -1,5 +1,5 @@
-export default function BookingsGrid (props) {
-  const {week, bookable, booking, setBooking} = props;
+export default function BookingsGrid(props) {
+  const { week, bookable, booking, setBooking } = props;
 
   return (
     <div className="bookings-grid placeholder">
