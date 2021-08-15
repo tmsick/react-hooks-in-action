@@ -1,20 +1,20 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
-import {getWeek, shortISO} from "../../utils/date-wrangler";
-import {useBookingsParams, useBookings} from "./bookingsHooks";
+import { getWeek, shortISO } from "../../utils/date-wrangler";
+import { useBookingsParams, useBookings } from "./bookingsHooks";
 
 import WeekPicker from "./WeekPicker";
 import BookingsGrid from "./BookingsGrid";
 import BookingDetails from "./BookingDetails";
 
-export default function Bookings ({bookable}) {
+export default function Bookings({ bookable }) {
   const [booking, setBooking] = useState(null);
 
-  const {date} = useBookingsParams();
+  const { date } = useBookingsParams();
   const week = getWeek(date);
   const weekStart = shortISO(week.start);
 
-  const {bookings} = useBookings(bookable?.id, week.start, week.end);
+  const { bookings } = useBookings(bookable?.id, week.start, week.end);
   const selectedBooking = bookings?.[booking?.session]?.[booking.date];
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function Bookings ({bookable}) {
   return (
     <div className="bookings">
       <div>
-        <WeekPicker/>
+        <WeekPicker />
 
         <BookingsGrid
           week={week}
