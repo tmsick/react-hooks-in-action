@@ -1,37 +1,38 @@
-import {sessions as sessionNames} from "../../static.json";
-import {addDays, shortISO} from "../../utils/date-wrangler";
+import { sessions as sessionNames } from "../../static.json";
+import { addDays, shortISO } from "../../utils/date-wrangler";
 
-export function getGrid (bookable, startDate) {
+export function getGrid(bookable, startDate) {
+  const dates = bookable.days
+    .sort()
+    .map((d) => shortISO(addDays(startDate, d)));
 
-  const dates = bookable.days.sort().map(
-    d => shortISO(addDays(startDate, d))
-  );
-
-  const sessions = bookable.sessions.map(i => sessionNames[i]);
+  const sessions = bookable.sessions.map((i) => sessionNames[i]);
 
   const grid = {};
 
-  sessions.forEach(session => {
+  sessions.forEach((session) => {
     grid[session] = {};
-    dates.forEach(date => grid[session][date] = {
-      session,
-      date,
-      bookableId: bookable.id,
-      title: ""
-    });
+    dates.forEach(
+      (date) =>
+        (grid[session][date] = {
+          session,
+          date,
+          bookableId: bookable.id,
+          title: "",
+        })
+    );
   });
 
   return {
     grid,
     dates,
-    sessions
+    sessions,
   };
 }
 
-export function transformBookings (bookingsArray) {
+export function transformBookings(bookingsArray) {
   return bookingsArray.reduce((bookings, booking) => {
-
-    const {session, date} = booking;
+    const { session, date } = booking;
 
     if (!bookings[session]) {
       bookings[session] = {};

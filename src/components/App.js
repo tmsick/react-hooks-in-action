@@ -1,14 +1,9 @@
-import {useState} from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import "../App.css";
 
-import {FaCalendarAlt, FaDoorOpen, FaUsers} from "react-icons/fa";
+import { FaCalendarAlt, FaDoorOpen, FaUsers } from "react-icons/fa";
 
 import BookablesPage from "./Bookables/BookablesPage";
 import BookingsPage from "./Bookings/BookingsPage";
@@ -17,12 +12,12 @@ import UserPicker from "./Users/UserPicker";
 
 import UserContext from "./Users/UserContext";
 
-export default function App () {
+export default function App() {
   const [user, setUser] = useState();
 
   // set an object as the value on the provider
   return (
-    <UserContext.Provider value={{user, setUser}}>
+    <UserContext.Provider value={{ user, setUser }}>
       <Router>
         <div className="App">
           <header>
@@ -30,19 +25,19 @@ export default function App () {
               <ul>
                 <li>
                   <Link to="/bookings" className="btn btn-header">
-                    <FaCalendarAlt/>
+                    <FaCalendarAlt />
                     <span>Bookings</span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/bookables" className="btn btn-header">
-                    <FaDoorOpen/>
+                    <FaDoorOpen />
                     <span>Bookables</span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/users" className="btn btn-header">
-                    <FaUsers/>
+                    <FaUsers />
                     <span>Users</span>
                   </Link>
                 </li>
@@ -50,17 +45,16 @@ export default function App () {
             </nav>
 
             {/* no props needed on UserPicker */}
-            <UserPicker/>
+            <UserPicker />
           </header>
 
           <Routes>
-            <Route path="/bookings" element={<BookingsPage/>}/>
-            <Route path="/bookables" element={<BookablesPage/>}/>
-            <Route path="/users" element={<UsersPage/>}/>
+            <Route path="/bookings" element={<BookingsPage />} />
+            <Route path="/bookables" element={<BookablesPage />} />
+            <Route path="/users" element={<UsersPage />} />
           </Routes>
         </div>
       </Router>
     </UserContext.Provider>
-
   );
 }
