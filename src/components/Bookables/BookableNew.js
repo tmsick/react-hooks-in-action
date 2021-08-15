@@ -1,27 +1,21 @@
 import BookableForm from "./BookableForm";
 import useFormState from "./useFormState";
 
-export default function BookableNew () {
+export default function BookableNew() {
   const status = "success";
-  const error = {message: "Error!"};
+  const error = { message: "Error!" };
 
   const formState = useFormState();
 
-  function handleSubmit () {
-  }
+  function handleSubmit() {}
 
   if (status === "error") {
-    return <p>{error.message}</p>
+    return <p>{error.message}</p>;
   }
 
   if (status === "loading") {
-    return <p>Loading!!!</p>
+    return <p>Loading!!!</p>;
   }
 
-  return (
-    <BookableForm
-      formState={formState}
-      handleSubmit={handleSubmit}
-    />
-  );
+  return <BookableForm formState={formState} handleSubmit={handleSubmit} />;
 }
