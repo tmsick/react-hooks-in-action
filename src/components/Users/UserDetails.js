@@ -1,12 +1,12 @@
-import {useQuery} from "react-query";
-import getData from '../../utils/api';
+import { useQuery } from "react-query";
+import getData from "../../utils/api";
 import Avatar from "./Avatar";
 
-export default function UserDetails ({userID, isPending}) {
-  const {data: user} = useQuery(
+export default function UserDetails({ userID, isPending }) {
+  const { data: user } = useQuery(
     ["user", userID],
     () => getData(`http://localhost:3001/users/${userID}`),
-    {suspense: true}
+    { suspense: true }
   );
 
   return (
@@ -26,5 +26,5 @@ export default function UserDetails ({userID, isPending}) {
         <p>{user.notes}</p>
       </div>
     </div>
-  )
+  );
 }
