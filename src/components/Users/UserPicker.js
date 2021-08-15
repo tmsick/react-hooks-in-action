@@ -1,9 +1,9 @@
-import {users} from "../../static.json";
+import { users } from "../../static.json";
 
-export default function UserPicker () {
+export default function UserPicker() {
   return (
     <select>
-      {users.map(u => (
+      {users.map((u) => (
         <option key={u.id}>{u.name}</option>
       ))}
     </select>
