@@ -1,11 +1,11 @@
-import {useQuery} from "react-query";
-import getData from '../../utils/api';
+import { useQuery } from "react-query";
+import getData from "../../utils/api";
 
-export default function UserDetails ({userID}) {
-  const {data: user} = useQuery(
+export default function UserDetails({ userID }) {
+  const { data: user } = useQuery(
     ["user", userID],
     () => getData(`http://localhost:3001/users/${userID}`),
-    {suspense: true}
+    { suspense: true }
   );
 
   return (
@@ -15,7 +15,7 @@ export default function UserDetails ({userID}) {
       </div>
 
       <div className="user-avatar">
-        <img src={`http://localhost:3001/img/${user.img}`} alt={user.name}/>
+        <img src={`http://localhost:3001/img/${user.img}`} alt={user.name} />
       </div>
 
       <div className="user-details">
@@ -23,5 +23,5 @@ export default function UserDetails ({userID}) {
         <p>{user.notes}</p>
       </div>
     </div>
-  )
+  );
 }
