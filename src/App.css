@@ -110,7 +110,6 @@ main {
   grid-column-gap: 40px;
 }
 
-
 .items-list-nav {
   margin: 1rem auto;
   padding: 0;
@@ -226,7 +225,6 @@ main {
   height: 100%;
 }
 
-
 @keyframes spin {
   100% {
     transform: rotate(360deg);
@@ -241,7 +239,6 @@ header .icon-loading {
   color: white;
 }
 
-
 .bookings {
   display: grid;
   grid-template-columns: 4fr 1fr;
@@ -251,7 +248,7 @@ header .icon-loading {
   background: var(--error);
   color: var(--page-bg);
   padding: 1em;
-  margin:0;
+  margin: 0;
 }
 .bookingsGrid {
   width: 100%;
@@ -259,39 +256,39 @@ header .icon-loading {
 }
 .bookingsGrid th,
 .bookingsGrid td {
-  padding:0.5em;
-  border:1px solid var(--page-bg);
-  height:5em;
+  padding: 0.5em;
+  border: 1px solid var(--page-bg);
+  height: 5em;
 }
 .bookingsGrid th {
   background: var(--primary);
-  color:var(--light-text);
+  color: var(--light-text);
 }
 .bookingsGrid td {
-  background:var(--light-text);
+  background: var(--light-text);
   transition: opacity 0.4s ease;
   opacity: 0.5;
 }
 .bookingsGrid.active td {
-  color:var(--dark-text);
+  color: var(--dark-text);
   opacity: 1;
 }
 .bookingsGrid thead th {
-  border-top:none;
-  border-bottom:none;
+  border-top: none;
+  border-bottom: none;
 }
 .bookingsGrid th:first-child,
 .bookingsGrid th:last-child {
-  border-left:none;
-  border-right:none;
+  border-left: none;
+  border-right: none;
 }
 .bookingsGrid.active td:hover {
   cursor: pointer;
-  background:#eee;
+  background: #eee;
 }
 .bookingsGrid.active .selected {
   background: var(--secondary);
-  color:var(--light-text);
+  color: var(--light-text);
 }
 .bookingsGrid.active td.selected:hover {
   background: var(--secondary);
@@ -308,7 +305,7 @@ header .icon-loading {
   position: relative;
   width: 100%;
   min-height: 600px;
-  overflow:auto;
+  overflow: auto;
 }
 
 .grid {
@@ -330,20 +327,20 @@ header .icon-loading {
   text-align: left;
 }
 .booking-details h2 {
-  background:var(--primary);
-  margin:0;
-  padding:0 0.5em 0 1em;
-  font-size:100%;
-  color:white;
+  background: var(--primary);
+  margin: 0;
+  padding: 0 0.5em 0 1em;
+  font-size: 100%;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height:4em;
+  min-height: 4em;
 }
 .booking-details h2 .controls {
   font-weight: normal;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 .booking-details h2 .btn {
   background: var(--primary);
@@ -351,30 +348,30 @@ header .icon-loading {
   padding: 0.6em 0.5em 0.6em 0.6em;
 }
 .booking-details h2 .btn:hover {
-  border-color:white;
+  border-color: white;
 }
 .booking-details h2 .btn > svg {
-  margin:0;
+  margin: 0;
 }
 .booking-details p {
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
 }
 .booking-details-fields {
-  padding:1em 1em 2em;
+  padding: 1em 1em 2em;
   margin-bottom: 1em;
   background: var(--secondary);
-  color:#fff;
+  color: #fff;
   overflow: hidden;
 }
 .booking-details-fields label {
   display: block;
-  margin:1em 0 0.2em;
-  padding:0;
+  margin: 1em 0 0.2em;
+  padding: 0;
   font-weight: bold;
 }
 .booking-details > .controls {
-  margin-top:1em;
+  margin-top: 1em;
   text-align: center;
 }
 .booking-details-fields .btn {
@@ -383,6 +380,6 @@ header .icon-loading {
 }
 
 .placeholder {
-  background:#eee;
-  padding:2rem;
+  background: #eee;
+  padding: 2rem;
 }
