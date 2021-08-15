@@ -1,6 +1,6 @@
-import {useReducer, useEffect, useRef, Fragment} from 'react';
-import {sessions, days} from "../../static.json";
-import {FaArrowRight} from "react-icons/fa";
+import { useReducer, useEffect, useRef, Fragment } from "react";
+import { sessions, days } from "../../static.json";
+import { FaArrowRight } from "react-icons/fa";
 import Spinner from "../UI/Spinner";
 import reducer from "./reducer";
 import getData from "../../utils/api";
@@ -11,111 +11,108 @@ const initialState = {
   hasDetails: true,
   bookables: [],
   isLoading: true,
-  error: false
+  error: false,
 };
 
-export default function BookablesList () {
+export default function BookablesList() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const {group, bookableIndex, bookables} = state;
-  const {hasDetails, isLoading, error} = state;
+  const { group, bookableIndex, bookables } = state;
+  const { hasDetails, isLoading, error } = state;
 
-  const bookablesInGroup = bookables.filter(b => b.group === group);
+  const bookablesInGroup = bookables.filter((b) => b.group === group);
   const bookable = bookablesInGroup[bookableIndex];
-  const groups = [...new Set(bookables.map(b => b.group))];
+  const groups = [...new Set(bookables.map((b) => b.group))];
 
   const timerRef = useRef(null);
 
   useEffect(() => {
-    dispatch({type: "FETCH_BOOKABLES_REQUEST"});
+    dispatch({ type: "FETCH_BOOKABLES_REQUEST" });
 
     getData("http://localhost:3001/bookables")
-      .then(bookables => dispatch({
-        type: "FETCH_BOOKABLES_SUCCESS",
-        payload: bookables
-      }))
-      .catch(error => dispatch({
-        type: "FETCH_BOOKABLES_ERROR",
-        payload: error
-      }));
+      .then((bookables) =>
+        dispatch({
+          type: "FETCH_BOOKABLES_SUCCESS",
+          payload: bookables,
+        })
+      )
+      .catch((error) =>
+        dispatch({
+          type: "FETCH_BOOKABLES_ERROR",
+          payload: error,
+        })
+      );
   }, []);
 
   useEffect(() => {
-
     timerRef.current = setInterval(() => {
-      dispatch({type: "NEXT_BOOKABLE"});
+      dispatch({ type: "NEXT_BOOKABLE" });
     }, 3000);
 
     return stopPresentation;
-
   }, []);
 
-  function stopPresentation () {
+  function stopPresentation() {
     clearInterval(timerRef.current);
   }
 
-  function changeGroup (e) {
+  function changeGroup(e) {
     dispatch({
       type: "SET_GROUP",
-      payload: e.target.value
+      payload: e.target.value,
     });
   }
 
-  function changeBookable (selectedIndex) {
+  function changeBookable(selectedIndex) {
     dispatch({
       type: "SET_BOOKABLE",
-      payload: selectedIndex
+      payload: selectedIndex,
     });
   }
 
-  function nextBookable () {
-    dispatch({type: "NEXT_BOOKABLE"});
+  function nextBookable() {
+    dispatch({ type: "NEXT_BOOKABLE" });
   }
 
-  function toggleDetails () {
-    dispatch({type: "TOGGLE_HAS_DETAILS"});
+  function toggleDetails() {
+    dispatch({ type: "TOGGLE_HAS_DETAILS" });
   }
 
   if (error) {
-    return <p>{error.message}</p>
+    return <p>{error.message}</p>;
   }
 
   if (isLoading) {
-    return <p><Spinner/> Loading bookables...</p>
+    return (
+      <p>
+        <Spinner /> Loading bookables...
+      </p>
+    );
   }
 
   return (
     <Fragment>
       <div>
-        <select
-          value={group}
-          onChange={changeGroup}
-        >
-          {groups.map(g => <option value={g} key={g}>{g}</option>)}
+        <select value={group} onChange={changeGroup}>
+          {groups.map((g) => (
+            <option value={g} key={g}>
+              {g}
+            </option>
+          ))}
         </select>
 
         <ul className="bookables items-list-nav">
           {bookablesInGroup.map((b, i) => (
-            <li
-              key={b.id}
-              className={i === bookableIndex ? "selected" : null}
-            >
-              <button
-                className="btn"
-                onClick={() => changeBookable(i)}
-              >
+            <li key={b.id} className={i === bookableIndex ? "selected" : null}>
+              <button className="btn" onClick={() => changeBookable(i)}>
                 {b.title}
               </button>
             </li>
           ))}
         </ul>
         <p>
-          <button
-            className="btn"
-            onClick={nextBookable}
-            autoFocus
-          >
-            <FaArrowRight/>
+          <button className="btn" onClick={nextBookable} autoFocus>
+            <FaArrowRight />
             <span>Next</span>
           </button>
         </p>
@@ -125,9 +122,7 @@ export default function BookablesList () {
         <div className="bookable-details">
           <div className="item">
             <div className="item-header">
-              <h2>
-                {bookable.title}
-              </h2>
+              <h2>{bookable.title}</h2>
               <span className="controls">
                 <label>
                   <input
@@ -137,10 +132,7 @@ export default function BookablesList () {
                   />
                   Show Details
                 </label>
-                <button
-                  className="btn"
-                  onClick={stopPresentation}
-                >
+                <button className="btn" onClick={stopPresentation}>
                   Stop
                 </button>
               </span>
@@ -153,15 +145,14 @@ export default function BookablesList () {
                 <h3>Availability</h3>
                 <div className="bookable-availability">
                   <ul>
-                    {bookable.days
-                      .sort()
-                      .map(d => <li key={d}>{days[d]}</li>)
-                    }
+                    {bookable.days.sort().map((d) => (
+                      <li key={d}>{days[d]}</li>
+                    ))}
                   </ul>
                   <ul>
-                    {bookable.sessions
-                      .map(s => <li key={s}>{sessions[s]}</li>)
-                    }
+                    {bookable.sessions.map((s) => (
+                      <li key={s}>{sessions[s]}</li>
+                    ))}
                   </ul>
                 </div>
               </div>
