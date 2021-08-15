@@ -1,36 +1,27 @@
-import {useReducer} from "react";
+import { useReducer } from "react";
 import reducer from "./weekReducer";
-import {getWeek} from "../../utils/date-wrangler";
-import {FaChevronLeft, FaCalendarDay, FaChevronRight} from "react-icons/fa";
+import { getWeek } from "../../utils/date-wrangler";
+import { FaChevronLeft, FaCalendarDay, FaChevronRight } from "react-icons/fa";
 
-export default function WeekPicker ({date}) {
+export default function WeekPicker({ date }) {
   const [week, dispatch] = useReducer(reducer, date, getWeek);
 
   return (
     <div>
       <p className="date-picker">
-        <button
-          className="btn"
-          onClick={() => dispatch({type: "PREV_WEEK"})}
-        >
-          <FaChevronLeft/>
+        <button className="btn" onClick={() => dispatch({ type: "PREV_WEEK" })}>
+          <FaChevronLeft />
           <span>Prev</span>
         </button>
 
-        <button
-          className="btn"
-          onClick={() => dispatch({type: "TODAY"})}
-        >
-          <FaCalendarDay/>
+        <button className="btn" onClick={() => dispatch({ type: "TODAY" })}>
+          <FaCalendarDay />
           <span>Today</span>
         </button>
 
-        <button
-          className="btn"
-          onClick={() => dispatch({type: "NEXT_WEEK"})}
-        >
+        <button className="btn" onClick={() => dispatch({ type: "NEXT_WEEK" })}>
           <span>Next</span>
-          <FaChevronRight/>
+          <FaChevronRight />
         </button>
       </p>
       <p>
