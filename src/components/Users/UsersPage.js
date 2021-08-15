@@ -1,10 +1,10 @@
-import {useState, useContext} from "react";
+import { useState, useContext } from "react";
 import UsersList from "./UsersList";
 import UserDetails from "./UserDetails";
 
 import UserContext from "./UserContext"; // import the shared context
 
-export default function UsersPage () {
+export default function UsersPage() {
   const [user, setUser] = useState(null);
 
   // get the user from context
@@ -17,8 +17,8 @@ export default function UsersPage () {
   // pass currentUser to children
   return (
     <main className="users-page">
-      <UsersList user={currentUser} setUser={setUser}/>
-      <UserDetails user={currentUser}/>
+      <UsersList user={currentUser} setUser={setUser} />
+      <UserDetails user={currentUser} />
     </main>
   );
 }
