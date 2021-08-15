@@ -1,16 +1,11 @@
-import {lazy, Suspense, Fragment} from "react";
-import {QueryClient, QueryClientProvider} from "react-query";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
+import { lazy, Suspense, Fragment } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "../App.css";
-import {FaCalendarAlt, FaDoorOpen, FaUsers} from "react-icons/fa";
+import { FaCalendarAlt, FaDoorOpen, FaUsers } from "react-icons/fa";
 import UserPicker from "./Users/UserPicker.js";
 import PageSpinner from "./UI/PageSpinner";
-import {UserProvider} from "./Users/UserContext";
+import { UserProvider } from "./Users/UserContext";
 
 import ErrorBoundary from "./UI/ErrorBoundary";
 
@@ -20,7 +15,7 @@ const UsersPage = lazy(() => import("./Users/UsersPage"));
 
 const queryClient = new QueryClient();
 
-export default function App () {
+export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <UserProvider>
@@ -31,26 +26,26 @@ export default function App () {
                 <ul>
                   <li>
                     <Link to="/bookings" className="btn btn-header">
-                      <FaCalendarAlt/>
+                      <FaCalendarAlt />
                       <span>Bookings</span>
                     </Link>
                   </li>
                   <li>
                     <Link to="/bookables" className="btn btn-header">
-                      <FaDoorOpen/>
+                      <FaDoorOpen />
                       <span>Bookables</span>
                     </Link>
                   </li>
                   <li>
                     <Link to="/users" className="btn btn-header">
-                      <FaUsers/>
+                      <FaUsers />
                       <span>Users</span>
                     </Link>
                   </li>
                 </ul>
               </nav>
 
-              <UserPicker/>
+              <UserPicker />
             </header>
 
             <ErrorBoundary
@@ -61,11 +56,11 @@ export default function App () {
                 </Fragment>
               }
             >
-              <Suspense fallback={<PageSpinner/>}>
+              <Suspense fallback={<PageSpinner />}>
                 <Routes>
-                  <Route path="/bookings" element={<BookingsPage/>}/>
-                  <Route path="/bookables/*" element={<BookablesPage/>}/>
-                  <Route path="/users" element={<UsersPage/>}/>
+                  <Route path="/bookings" element={<BookingsPage />} />
+                  <Route path="/bookables/*" element={<BookablesPage />} />
+                  <Route path="/users" element={<UsersPage />} />
                 </Routes>
               </Suspense>
             </ErrorBoundary>
