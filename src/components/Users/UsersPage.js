@@ -1,7 +1,7 @@
-import {useState} from "react";
+import { useState } from "react";
 import UsersList from "./UsersList";
 import UserDetails from "./UserDetails";
-import {useUser} from "./UserContext"; // import custom hook
+import { useUser } from "./UserContext"; // import custom hook
 
 export default function UsersPage() {
   const [user, setUser] = useState(null);
@@ -10,8 +10,8 @@ export default function UsersPage() {
 
   return (
     <main className="users-page">
-      <UsersList user={currentUser} setUser={setUser}/>
-      <UserDetails user={currentUser}/>
+      <UsersList user={currentUser} setUser={setUser} />
+      <UserDetails user={currentUser} />
     </main>
   );
 }

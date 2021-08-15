@@ -1,23 +1,23 @@
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import BookablesView from "./BookablesView";
 import BookableEdit from "./BookableEdit";
 import BookableNew from "./BookableNew";
 
-export default function BookablesPage () {
+export default function BookablesPage() {
   return (
     <Routes>
       <Route path="/:id">
-        <BookablesView/>
+        <BookablesView />
       </Route>
       <Route path="/">
-        <BookablesView/>
+        <BookablesView />
       </Route>
       <Route path="/:id/edit">
-        <BookableEdit/>
+        <BookableEdit />
       </Route>
       <Route path="/new">
-        <BookableNew/>
+        <BookableNew />
       </Route>
     </Routes>
   );
